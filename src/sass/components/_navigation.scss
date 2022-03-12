@@ -1,0 +1,44 @@
+.nav {
+  padding: 1rem 10rem;
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    width: 8rem;
+    height: 8rem;
+    margin: 0;
+    margin-right: 5rem;
+    &--image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__lists {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  &__list {
+    margin: 0 5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  &__item {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  &__right {
+    margin-left: auto;
+  }
+}

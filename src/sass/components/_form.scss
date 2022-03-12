@@ -1,0 +1,15 @@
+.form {
+}
+
+.input {
+  &__group {
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+  }
+  &__box {
+    padding: 2rem 3rem;
+    outline: none;
+  }
+}

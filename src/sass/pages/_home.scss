@@ -1,0 +1,32 @@
+.home {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  background-image: radial-gradient(
+    farthest-corner circle at 10% 10%,
+    #f76a28,
+    #eebb12
+  );
+  &__user {
+    padding: 5rem;
+    background-color: #fff;
+
+    &__input {
+      margin: 1rem 0;
+    }
+  }
+  &__image__center {
+    img {
+    }
+  }
+  &__image__right {
+    img {
+    }
+  }
+}
+
+.separator__vertical {
+  align-self: stretch;
+  width: 4rem;
+  background-color: #fff;
+}
