@@ -55,7 +55,7 @@ export default function Navigation() {
           </a>
         </li>
 
-        {!Auth.data.hasOwnProperty('access') && (
+        {Auth.data.hasOwnProperty('access') && (
           <li className='nav__list'>
             <a
               href='/product/create'
