@@ -1,10 +1,16 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import Product from '../components/Product';
 import ImageProcess from '../images/process.png';
 import ImageTable from '../images/table.png';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const Auth = useSelector((state) => state.Auth);
+
+  if (!Auth.data.hasOwnProperty('access')) {
+    return <Navigate to='/user/login' replace />;
+  }
   return (
     <>
       <Navigation />

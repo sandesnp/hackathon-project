@@ -1,7 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { PURGE } from '../redux/AuthSlice';
 
 export default function Navigation() {
+  const Auth = useSelector((state) => state.Auth);
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   function gotoLink(e, link) {
     e.preventDefault();
@@ -51,23 +55,35 @@ export default function Navigation() {
           </a>
         </li>
         <li className='nav__list nav__right'>
-          <a
-            href='/user/login'
-            onClick={(e) => gotoLink(e, '/user/login')}
-            className='nav__item'
-          >
-            Login
-          </a>
+          {Auth.data.hasOwnProperty('access') ? (
+            <a
+              onClick={(e) => dispatch(PURGE())}
+              className='nav__item'
+              style={{ cursor: 'pointer' }}
+            >
+              Logout
+            </a>
+          ) : (
+            <a
+              href='/user/login'
+              onClick={(e) => gotoLink(e, '/user/login')}
+              className='nav__item'
+            >
+              Login
+            </a>
+          )}
         </li>
-        <li className='nav__list'>
-          <a
-            href='/user/register'
-            onClick={(e) => gotoLink(e, '/user/register')}
-            className='nav__item'
-          >
-            Register
-          </a>
-        </li>
+        {!Auth.data.hasOwnProperty('access') && (
+          <li className='nav__list'>
+            <a
+              href='/user/register'
+              onClick={(e) => gotoLink(e, '/user/register')}
+              className='nav__item'
+            >
+              Register
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );
