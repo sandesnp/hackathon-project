@@ -1,19 +1,27 @@
-# sync changes(for .env compare with .env.example)
+# Hackathon (Frontend App)
 
-1. git pull origin <branch>
+> Web App by team 3 From Hero to Net-Zero: Decarbonising The Cities Hackathon 2022
+
+# clone the repo
+
+```bash
+$ git clone https://github.com/sandesnp/hackathon-project.git
+```
 
 # install dependencies
 
-2. npm
+```bash
+$ npm i
+```
 
-# build dist
+# Running the app
 
-3. npm build
+```bash
+$ npm  run start
+```
 
-# run migration (if any)
+# buid app for production
 
-4. npm typeorm migration:run
-
-# start service:
-
-5. pm2 start dist/main.js --name <name>:<port>
+```bash
+$ npm run build
+```
