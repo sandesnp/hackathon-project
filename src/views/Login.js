@@ -12,6 +12,11 @@ function Login(props) {
   const handleUser = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  function gotoLink(e, link) {
+    e.preventDefault();
+    navigate(link);
+  }
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -43,7 +48,6 @@ function Login(props) {
             name='password'
             value={user.password}
             onChange={handleUser}
-            onEnter
           />
         </div>
 
@@ -54,13 +58,15 @@ function Login(props) {
           {' '}
           Login
         </button>
-        <button
+        <a
           className='credential__btn credential__btn--left'
+          href='/user/register'
+          onClick={(e) => gotoLink(e, '/user/register')}
           style={{ marginTop: '-2rem' }}
         >
           {' '}
           Register
-        </button>
+        </a>
       </form>
     </div>
   );

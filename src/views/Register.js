@@ -1,6 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+  let navigate = useNavigate();
+  const handleUser = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  function gotoLink(e, link) {
+    e.preventDefault();
+    navigate(link);
+  }
+
   return (
     <div className='credential'>
       <form className='credential__form-container credential__form-container--left'>
@@ -10,6 +21,31 @@ export default function Register() {
             className='credential__input'
             type='Email'
             placeholder='Email'
+          />
+          <input
+            className='credential__input'
+            type='text'
+            placeholder='firstName'
+          />
+          <input
+            className='credential__input'
+            type='text'
+            placeholder='middleName'
+          />
+          <input
+            className='credential__input'
+            type='text'
+            placeholder='lastName'
+          />
+          <input
+            className='credential__input'
+            type='text'
+            placeholder='dateOfBirth'
+          />
+          <input
+            className='credential__input'
+            type='text'
+            placeholder='address'
           />
           <input
             className='credential__input'
@@ -31,6 +67,15 @@ export default function Register() {
           {' '}
           Signup
         </button>
+        <a
+          className='credential__btn credential__btn--right'
+          href='/user/login'
+          onClick={(e) => gotoLink(e, '/user/login')}
+          style={{ marginTop: '1rem' }}
+        >
+          {' '}
+          Login
+        </a>
       </form>
     </div>
   );

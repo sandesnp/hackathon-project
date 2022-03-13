@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import ImageProcess from '../images/process.png';
 import ImageTable from '../images/table.png';
-import { useSelector } from 'react-redux';
+import { userGetThunk } from '../redux/UserSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Home() {
-  const Auth = useSelector((state) => state.Auth);
-
-  if (!Auth.data.hasOwnProperty('access')) {
+  const dispatch = useDispatch();
+  const Auth = useSelector((state) => state.Auth.data);
+  let User = useSelector((state) => state.User?.data);
+  if (!Auth.hasOwnProperty('access')) {
     return <Navigate to='/user/login' replace />;
+  } else {
+    dispatch(userGetThunk(Auth.access.token));
   }
+
+  const fullName =
+    (User.firstName && User.firstName + ' ') +
+    (User.middleName && User.middleName + ' ') +
+    (User.lastName && User.lastName);
+
   return (
     <>
       <Navigation />
@@ -18,19 +28,20 @@ export default function Home() {
         <div className='home__user'>
           <h1>User Information</h1>
           <div className='home__user__input'>
-            Full Name <span></span>
+            {fullName} <span></span>
           </div>
           <div className='home__user__input'>
-            Full Email <span></span>
+            {User.email}
+            <span></span>
           </div>
           <div className='home__user__input'>
-            Full Address <span></span>
+            {User.address[0].cityName} <span></span>
           </div>
           <div className='home__user__input'>
-            Full Gender <span></span>
+            {User.gender} <span></span>
           </div>
           <div className='home__user__input'>
-            Full Date of Birth <span></span>
+            {User.dateOfBirth} <span></span>
           </div>
         </div>
         <figure className='home__image__center'>
