@@ -15,7 +15,6 @@ export default function Home() {
   } else {
     dispatch(userGetThunk(Auth.access.token));
   }
-
   const fullName =
     (User.firstName && User.firstName + ' ') +
     (User.middleName && User.middleName + ' ') +
@@ -34,9 +33,7 @@ export default function Home() {
             {User.email}
             <span></span>
           </div>
-          <div className='home__user__input'>
-            {User.address[0].cityName} <span></span>
-          </div>
+
           <div className='home__user__input'>
             {User.gender} <span></span>
           </div>
