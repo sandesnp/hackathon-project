@@ -54,6 +54,19 @@ export default function Navigation() {
             Contact
           </a>
         </li>
+
+        {!Auth.data.hasOwnProperty('access') && (
+          <li className='nav__list'>
+            <a
+              href='/product/create'
+              onClick={(e) => gotoLink(e, '/product/create')}
+              className='nav__item'
+            >
+              Product Create
+            </a>
+          </li>
+        )}
+
         <li className='nav__list nav__right'>
           {Auth.data.hasOwnProperty('access') ? (
             <a
