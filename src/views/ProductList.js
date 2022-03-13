@@ -20,15 +20,16 @@ export default function ProductList() {
   const ProductContainer = () => {
     return (
       <div className='product__container'>
-        {allProducts?.map((product, key) => (
-          <Product
-            key={key}
-            productName={product.name}
-            productDescription={product.description}
-            productPrice={product.price}
-            productImage={product.attributes[0].url}
-          />
-        ))}
+        {allProducts.length > 0 &&
+          allProducts?.map((product, key) => (
+            <Product
+              key={key}
+              productName={product.name}
+              productDescription={product.description}
+              productPrice={product.price}
+              productImage={'//unsplash.it/500/300'}
+            />
+          ))}
       </div>
     );
   };
